@@ -11,6 +11,7 @@ from tools.rawimageeditor.RawImageEditor import RawImageEditor
 from tools.video_compare.videocompare import VideoCompare
 from tools.pqtools_to_code.pqtools_to_code import PQtoolsToCode
 from tools.yuv_viewer.yuv_viewer import YUVViewer
+from tools.batch_rename.batch_rename import BatchRename
 from components.check_update import CheckUpdate, simple_check_is_need_update
 import components.logconfig as log
 from logging import info
@@ -29,6 +30,7 @@ class ImageTools(MainWindow):
             "HelpDoc": [self.ui.userguide, HelpDoc],
             "PQtoolsToCode": [self.ui.pqtools2code, PQtoolsToCode],
             "YUVViewer": [self.ui.yuv_viewer, YUVViewer],
+            "BatchRename": [self.ui.batch_rename, BatchRename],
         }
         self.subwindows_ui = self.ui.mdiArea
         self.subwindows_ui.setStyleSheet("QTabBar::tab { height: 30px;}")
