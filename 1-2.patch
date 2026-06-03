@@ -1,0 +1,73 @@
+diff --git a/ImageTools.py b/ImageTools.py
+index d909d83..c0b6fdf 100644
+--- a/ImageTools.py
++++ b/ImageTools.py
+@@ -11,6 +11,7 @@ from tools.rawimageeditor.RawImageEditor import RawImageEditor
+ from tools.video_compare.videocompare import VideoCompare
+ from tools.pqtools_to_code.pqtools_to_code import PQtoolsToCode
+ from tools.yuv_viewer.yuv_viewer import YUVViewer
++from tools.batch_rename.batch_rename import BatchRenameTool
+ from components.check_update import CheckUpdate, simple_check_is_need_update
+ import components.logconfig as log
+ from logging import info
+@@ -29,6 +30,7 @@ class ImageTools(MainWindow):
+             "HelpDoc": [self.ui.userguide, HelpDoc],
+             "PQtoolsToCode": [self.ui.pqtools2code, PQtoolsToCode],
+             "YUVViewer": [self.ui.yuv_viewer, YUVViewer],
++            "BatchRenameTool": [self.ui.batch_rename, BatchRenameTool],
+         }
+         self.subwindows_ui = self.ui.mdiArea
+         self.subwindows_ui.setStyleSheet("QTabBar::tab { height: 30px;}")
+diff --git a/components/ui/mainwindow.py b/components/ui/mainwindow.py
+index 92b6a5b..2e952c9 100644
+--- a/components/ui/mainwindow.py
++++ b/components/ui/mainwindow.py
+@@ -46,6 +46,8 @@ class Ui_MainWindow(object):
+         self.checkupdate.setObjectName(u"checkupdate")
+         self.yuv_viewer = QAction(MainWindow)
+         self.yuv_viewer.setObjectName(u"yuv_viewer")
++        self.batch_rename = QAction(MainWindow)
++        self.batch_rename.setObjectName(u"batch_rename")
+         self.centralwidget = QWidget(MainWindow)
+         self.centralwidget.setObjectName(u"centralwidget")
+         self.gridLayout_2 = QGridLayout(self.centralwidget)
+@@ -83,6 +85,7 @@ class Ui_MainWindow(object):
+         self.menu_2.addAction(self.rawimageeditor)
+         self.menu_2.addAction(self.video_compare)
+         self.menu_2.addAction(self.yuv_viewer)
++        self.menu_2.addAction(self.batch_rename)
+         self.menuISP.addAction(self.pqtools2code)
+         self.menuISP.addAction(self.field_depth_tool)
+         self.menu.addAction(self.userguide)
+@@ -108,6 +111,7 @@ class Ui_MainWindow(object):
+         self.clearcache.setText(QCoreApplication.translate("MainWindow", u"\u6e05\u7406\u7f13\u5b58", None))
+         self.checkupdate.setText(QCoreApplication.translate("MainWindow", u"\u68c0\u67e5\u66f4\u65b0", None))
+         self.yuv_viewer.setText(QCoreApplication.translate("MainWindow", u"YUV\u67e5\u770b\u5de5\u5177", None))
++        self.batch_rename.setText(QCoreApplication.translate("MainWindow", u"\u56fe\u7247\u6279\u91cf\u91cd\u547d\u540d", None))
+         self.menu_2.setTitle(QCoreApplication.translate("MainWindow", u"\u5de5\u5177", None))
+         self.menuISP.setTitle(QCoreApplication.translate("MainWindow", u"ISP", None))
+         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\u5173\u4e8e", None))
+diff --git a/components/ui/mainwindow.ui b/components/ui/mainwindow.ui
+index 8511408..e8c4cc1 100644
+--- a/components/ui/mainwindow.ui
++++ b/components/ui/mainwindow.ui
+@@ -70,6 +70,7 @@
+     <addaction name="rawimageeditor"/>
+     <addaction name="video_compare"/>
+     <addaction name="yuv_viewer"/>
++    <addaction name="batch_rename"/>
+    </widget>
+    <widget class="QMenu" name="menuISP">
+     <property name="title">
+@@ -150,6 +151,11 @@
+     <string>YUV查看工具</string>
+    </property>
+   </action>
++  <action name="batch_rename">
++   <property name="text">
++    <string>图片批量重命名</string>
++   </property>
++  </action>
+  </widget>
+  <resources/>
+  <connections/>

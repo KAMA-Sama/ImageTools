@@ -70,6 +70,7 @@
     <addaction name="rawimageeditor"/>
     <addaction name="video_compare"/>
     <addaction name="yuv_viewer"/>
+    <addaction name="batch_rename"/>
    </widget>
    <widget class="QMenu" name="menuISP">
     <property name="title">
@@ -148,6 +149,11 @@
   <action name="yuv_viewer">
    <property name="text">
     <string>YUV查看工具</string>
+   </property>
+  </action>
+  <action name="batch_rename">
+   <property name="text">
+    <string>图片批量重命名</string>
    </property>
   </action>
  </widget>
