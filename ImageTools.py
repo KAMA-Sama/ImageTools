@@ -11,6 +11,7 @@ from tools.rawimageeditor.RawImageEditor import RawImageEditor
 from tools.video_compare.videocompare import VideoCompare
 from tools.pqtools_to_code.pqtools_to_code import PQtoolsToCode
 from tools.yuv_viewer.yuv_viewer import YUVViewer
+from tools.batch_rename.batch_rename import BatchRenameTool
 from components.check_update import CheckUpdate, simple_check_is_need_update
 import components.logconfig as log
 from logging import info
@@ -24,6 +25,7 @@ class ImageTools(MainWindow):
             "FieldDepthWindow": [self.ui.field_depth_tool, FieldDepthWindow],
             "ShakeTestTool": [self.ui.shake_tool, ShakeTestTool],
             "ImageEditor": [self.ui.imageeditor, ImageEditor],
+            "BatchRenameTool": [self.ui.batch_rename, BatchRenameTool],
             "RawImageEditor": [self.ui.rawimageeditor, RawImageEditor],
             "VideoCompare": [self.ui.video_compare, VideoCompare],
             "HelpDoc": [self.ui.userguide, HelpDoc],
@@ -35,7 +37,6 @@ class ImageTools(MainWindow):
         self.ui.clearcache.triggered.connect(self.clear_cache)
         self.ui.checkupdate.triggered.connect(self.add_checkupdate_window)
         for (key, value) in self.subwindow_function.items():
-            # 注意，这个lambda表达式必须要先赋值才能使用，否则connect的永远是最后的一个类
             value[0].triggered.connect(
                 lambda win_name=key, win_object=value[1]: self.add_sub_window(win_name, win_object))
 

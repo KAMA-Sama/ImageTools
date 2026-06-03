@@ -67,6 +67,7 @@
     </property>
     <addaction name="shake_tool"/>
     <addaction name="imageeditor"/>
+    <addaction name="batch_rename"/>
     <addaction name="rawimageeditor"/>
     <addaction name="video_compare"/>
     <addaction name="yuv_viewer"/>
@@ -98,6 +99,11 @@
   <action name="imageeditor">
    <property name="text">
     <string>图片分析工具</string>
+   </property>
+  </action>
+  <action name="batch_rename">
+   <property name="text">
+    <string>图片批量重命名</string>
    </property>
   </action>
   <action name="about">
